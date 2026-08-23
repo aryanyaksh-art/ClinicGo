@@ -2,15 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import type { Clinic } from "@/lib/types";
 import { AddressSearch } from "@/components/AddressSearch";
 import { ClinicCard } from "@/components/ClinicCard";
-import { DecorativeBlobs } from "@/components/DecorativeBlobs";
+import { RadarSweep } from "@/components/RadarSweep";
 
 interface ResultClinic {
   clinic: Clinic;
   distanceKm: number;
 }
+
+const gallery = [
+  { src: "/images/doctor-patient.jpg", alt: "Doctor checking a young patient" },
+  { src: "/images/front-desk-chat.jpg", alt: "Patient chatting with clinic staff at the front desk" },
+  { src: "/images/clinic-reception.webp", alt: "Clinic reception and waiting area" },
+  { src: "/images/exam-room.jpg", alt: "A clean, ready exam room" },
+];
 
 export function LocateClient() {
   const searchParams = useSearchParams();
@@ -69,20 +77,39 @@ export function LocateClient() {
   const visibleResults = results?.filter((r) => !openOnly || r.clinic.clinic_latest_status[0]?.accepting_walk_ins === true);
 
   return (
-    <main className="relative flex flex-1 flex-col overflow-hidden bg-zinc-50 dark:bg-black">
-      <DecorativeBlobs />
-      <div className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-12">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">Locate a clinic</h1>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Enter your address to sweep the nearest walk-in clinics across the GTA, checked live, right now.
-          </p>
+    <main className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
+      <section className="relative isolate flex items-center overflow-hidden py-16">
+        <Image src="/images/clinic-reception.webp" alt="A clinic reception area" fill priority className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/90 via-emerald-900/80 to-emerald-800/70" />
+
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 text-center">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Locate a clinic</h1>
+            <p className="text-emerald-50/90">
+              Enter your address to sweep the nearest walk-in clinics across the GTA, checked live, right now.
+            </p>
+          </div>
+          <AddressSearch initialValue={initialAddress} onSearch={handleSearch} />
         </div>
+      </section>
 
-        <AddressSearch initialValue={initialAddress} onSearch={handleSearch} />
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 px-6 py-8 sm:grid-cols-4">
+        {gallery.map((image) => (
+          <div key={image.src} className="relative aspect-square overflow-hidden rounded-xl shadow-sm">
+            <Image src={image.src} alt={image.alt} fill className="object-cover" />
+          </div>
+        ))}
+      </div>
 
+      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 pb-16">
         {loading && (
-          <p className="text-sm text-zinc-500">Sweeping clinics near you. This checks each clinic&apos;s site live, so it can take a moment...</p>
+          <div className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <RadarSweep size={72} />
+            <div>
+              <p className="font-medium text-zinc-900 dark:text-zinc-50">Sweeping clinics near you</p>
+              <p className="text-sm text-zinc-500">Checking each clinic&apos;s site live, this can take a moment...</p>
+            </div>
+          </div>
         )}
 
         {error && (
