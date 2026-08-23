@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Pulse Urgent Care (Chinguacousy/Steeles)",
+    "address": "55 Dusk Dr #1, Brampton, ON L6Y 5Z6",
+    "website_url": "https://pulseucc.com/",
+    "source_url": "https://pulseucc.com/",
+    "phone": "+1 (905) 451-9999"
+  },
+  {
+    "name": "Pulse Urgent Care (Bramalea/Mayfield)",
+    "address": "11755 Bramalea Rd Unit 4, Brampton, ON L6R 3S9",
+    "website_url": "https://pulseucc.com/",
+    "source_url": "https://pulseucc.com/",
+    "phone": "+1 (289) 801-8999"
+  },
+  {
+    "name": "UCC Urgent Care Centre (Brampton East - Springdale)",
+    "address": "51 Mountainash Road, Springdale Square, Unit 8, Brampton, ON L6R 1W4",
+    "website_url": "https://urgentcarecentre.ca/",
+    "source_url": "https://urgentcarecentre.ca/",
+    "phone": "905-799-2722"
+  },
+  {
+    "name": "UCC Urgent Care Centre (Brampton West - McLaughlin)",
+    "address": "10088 McLaughlin Road, Unit 14, Brampton, ON L7A 2X6",
+    "website_url": "https://urgentcarecentre.ca/",
+    "source_url": "https://urgentcarecentre.ca/",
+    "phone": "905-799-2971"
+  },
+  {
+    "name": "Heart Lake Health Centre",
+    "address": "180 Sandalwood Parkway East, Brampton, ON L6Z 1Y4",
+    "website_url": "https://heartlakemed.com/brampton-walk-in/",
+    "source_url": "https://heartlakemed.com/brampton-walk-in/",
+    "phone": "905-846-9255"
+  },
+  {
+    "name": "Howden Medical Clinic",
+    "address": "375 Howden Blvd #2, Brampton, ON L6S 4L6",
+    "website_url": "https://howdenmedicalclinic.com/",
+    "source_url": "https://howdenmedicalclinic.com/",
+    "phone": "(905) 790-2666"
+  },
+  {
+    "name": "Cornerstone Medical Clinic",
+    "address": "8990 Chinguacousy Rd. Unit 9, Brampton, ON L6Y 5X6",
+    "website_url": "https://cornerstonemedicalclinic.ca/",
+    "source_url": "https://cornerstonemedicalclinic.ca/",
+    "phone": "(905) 450-5780"
+  },
+  {
+    "name": "Vital Urgent Care (Brampton West)",
+    "address": "11210 Creditview Road, Unit D, Brampton, ON L7A 4X3",
+    "website_url": "https://vitalurgentcare.ca/walk-in-clinic-brampton-west/",
+    "source_url": "https://vitalurgentcare.ca/walk-in-clinic-brampton-west/",
+    "phone": "905-257-6712"
+  }
+]
