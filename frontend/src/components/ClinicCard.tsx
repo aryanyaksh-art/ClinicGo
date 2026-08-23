@@ -1,4 +1,5 @@
 import type { Clinic } from "@/lib/types";
+import { estimatedDriveMinutes } from "@/lib/geo";
 
 function StatusBadge({ accepting }: { accepting: boolean | null }) {
   if (accepting === true) {
@@ -22,7 +23,7 @@ function StatusBadge({ accepting }: { accepting: boolean | null }) {
   );
 }
 
-export function ClinicCard({ clinic }: { clinic: Clinic }) {
+export function ClinicCard({ clinic, distanceKm }: { clinic: Clinic; distanceKm?: number }) {
   const status = clinic.clinic_latest_status[0];
 
   return (
@@ -33,6 +34,12 @@ export function ClinicCard({ clinic }: { clinic: Clinic }) {
       </div>
 
       <p className="text-sm text-zinc-600 dark:text-zinc-400">{clinic.address}</p>
+
+      {distanceKm != null && (
+        <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
+          {distanceKm.toFixed(1)} km away &middot; ~{estimatedDriveMinutes(distanceKm)} min drive (estimated)
+        </p>
+      )}
 
       {status?.estimated_wait_minutes != null && (
         <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">

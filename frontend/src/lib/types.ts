@@ -15,5 +15,7 @@ export interface Clinic {
   phone: string | null;
   website_url: string;
   booking_url: string | null;
+  lat: number | null;
+  lng: number | null;
   clinic_latest_status: ClinicLatestStatus[];
 }

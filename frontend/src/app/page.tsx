@@ -1,35 +1,28 @@
-import { supabase } from "@/lib/supabase";
-import type { Clinic } from "@/lib/types";
-import { ClinicList } from "@/components/ClinicList";
+"use client";
 
-export const revalidate = 60;
+import { useRouter } from "next/navigation";
+import { AddressSearch } from "@/components/AddressSearch";
 
-export default async function Home() {
-  const { data, error } = await supabase
-    .from("clinics")
-    .select("*, clinic_latest_status(*)")
-    .order("name");
-
-  const clinics = (data ?? []) as unknown as Clinic[];
+export default function Home() {
+  const router = useRouter();
 
   return (
-    <div className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-12">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">ClinicGo</h1>
-          <p className="mt-1 text-zinc-600 dark:text-zinc-400">
-            Find a walk-in clinic in Brampton that&apos;s actually open right now.
+    <main className="flex flex-1 items-center bg-white dark:bg-black">
+      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-24 text-center">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl">
+            ClinicGo
+          </h1>
+          <p className="mx-auto max-w-xl text-lg text-zinc-500 dark:text-zinc-400">
+            Type in your address and we&apos;ll find walk-in clinics near you in Brampton — with how far of a
+            drive each one is.
           </p>
         </div>
 
-        {error ? (
-          <p className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-300">
-            Failed to load clinics: {error.message}
-          </p>
-        ) : (
-          <ClinicList clinics={clinics} />
-        )}
-      </main>
-    </div>
+        <div className="w-full max-w-xl">
+          <AddressSearch size="lg" onSearch={(address) => router.push(`/locate?address=${encodeURIComponent(address)}`)} />
+        </div>
+      </div>
+    </main>
   );
 }

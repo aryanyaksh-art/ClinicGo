@@ -28,7 +28,7 @@ Helps Brampton residents find walk-in clinics that are actually open and accepti
 
 Schema lives in the `clinicgo` Supabase project (region ca-central-1):
 
-- `clinics` — static info: name, address, coordinates, website/booking URLs
+- `clinics` — static info: name, address, coordinates (geocoded via OpenStreetMap Nominatim), website/booking URLs
 - `clinic_status_checks` — append-only log of every scrape (accepting walk-ins?, estimated wait, raw text, success/error)
 - `clinic_latest_status` — view returning just the most recent check per clinic
 - `clinic_hours` — regular posted operating hours per day of week (not yet populated by the scraper)
