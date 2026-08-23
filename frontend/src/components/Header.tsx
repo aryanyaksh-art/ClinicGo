@@ -28,7 +28,7 @@ export function Header() {
                 href={link.href}
                 className={
                   active
-                    ? "text-zinc-900 dark:text-zinc-50"
+                    ? "text-accent"
                     : "text-zinc-500 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
                 }
               >
@@ -42,7 +42,7 @@ export function Header() {
           href="https://github.com/aryanyaksh-art/ClinicGo"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full border border-zinc-300 px-4 py-1.5 text-sm font-medium text-zinc-700 transition hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-50 dark:hover:text-zinc-50"
+          className="rounded-full border border-zinc-300 px-4 py-1.5 text-sm font-medium text-zinc-700 transition hover:border-accent hover:text-accent dark:border-zinc-700 dark:text-zinc-300"
         >
           View on GitHub
         </a>

@@ -25,14 +25,14 @@ export function AddressSearch({
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Enter your address in Brampton..."
-        className={`w-full rounded-full border border-zinc-300 bg-white px-5 text-zinc-900 shadow-sm outline-none transition focus:border-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:focus:border-zinc-50 ${
+        placeholder="Enter your address in the GTA..."
+        className={`w-full rounded-full border border-zinc-300 bg-white px-5 text-zinc-900 shadow-sm outline-none transition focus:border-accent dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 ${
           size === "lg" ? "py-4 text-base" : "py-2.5 text-sm"
         }`}
       />
       <button
         type="submit"
-        className={`shrink-0 rounded-full bg-zinc-900 font-medium text-white transition hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200 ${
+        className={`shrink-0 rounded-full bg-accent font-medium text-white transition hover:bg-accent-hover ${
           size === "lg" ? "px-8 py-4 text-base" : "px-6 py-2.5 text-sm"
         }`}
       >

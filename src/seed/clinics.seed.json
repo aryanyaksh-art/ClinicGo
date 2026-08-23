@@ -2,57 +2,396 @@
   {
     "name": "Pulse Urgent Care (Chinguacousy/Steeles)",
     "address": "55 Dusk Dr #1, Brampton, ON L6Y 5Z6",
+    "city": "Brampton",
     "website_url": "https://pulseucc.com/",
     "source_url": "https://pulseucc.com/",
-    "phone": "+1 (905) 451-9999"
+    "phone": "+1 (905) 451-9999",
+    "lat": 43.6558831,
+    "lng": -79.7679131
   },
   {
     "name": "Pulse Urgent Care (Bramalea/Mayfield)",
     "address": "11755 Bramalea Rd Unit 4, Brampton, ON L6R 3S9",
+    "city": "Brampton",
     "website_url": "https://pulseucc.com/",
     "source_url": "https://pulseucc.com/",
-    "phone": "+1 (289) 801-8999"
+    "phone": "+1 (289) 801-8999",
+    "lat": 43.7703575,
+    "lng": -79.7794063
   },
   {
     "name": "UCC Urgent Care Centre (Brampton East - Springdale)",
     "address": "51 Mountainash Road, Springdale Square, Unit 8, Brampton, ON L6R 1W4",
+    "city": "Brampton",
     "website_url": "https://urgentcarecentre.ca/",
     "source_url": "https://urgentcarecentre.ca/",
-    "phone": "905-799-2722"
+    "phone": "905-799-2722",
+    "lat": 43.7604677,
+    "lng": -79.7277697
   },
   {
     "name": "UCC Urgent Care Centre (Brampton West - McLaughlin)",
     "address": "10088 McLaughlin Road, Unit 14, Brampton, ON L7A 2X6",
+    "city": "Brampton",
     "website_url": "https://urgentcarecentre.ca/",
     "source_url": "https://urgentcarecentre.ca/",
-    "phone": "905-799-2971"
+    "phone": "905-799-2971",
+    "lat": 43.6960265,
+    "lng": -79.8000649
   },
   {
     "name": "Heart Lake Health Centre",
     "address": "180 Sandalwood Parkway East, Brampton, ON L6Z 1Y4",
+    "city": "Brampton",
     "website_url": "https://heartlakemed.com/brampton-walk-in/",
     "source_url": "https://heartlakemed.com/brampton-walk-in/",
-    "phone": "905-846-9255"
+    "phone": "905-846-9255",
+    "lat": 43.7276405,
+    "lng": -79.794536
   },
   {
     "name": "Howden Medical Clinic",
     "address": "375 Howden Blvd #2, Brampton, ON L6S 4L6",
+    "city": "Brampton",
     "website_url": "https://howdenmedicalclinic.com/",
     "source_url": "https://howdenmedicalclinic.com/",
-    "phone": "(905) 790-2666"
+    "phone": "(905) 790-2666",
+    "lat": 43.7182861,
+    "lng": -79.7440516
   },
   {
     "name": "Cornerstone Medical Clinic",
     "address": "8990 Chinguacousy Rd. Unit 9, Brampton, ON L6Y 5X6",
+    "city": "Brampton",
     "website_url": "https://cornerstonemedicalclinic.ca/",
     "source_url": "https://cornerstonemedicalclinic.ca/",
-    "phone": "(905) 450-5780"
+    "phone": "(905) 450-5780",
+    "lat": 43.6655068,
+    "lng": -79.7808323
   },
   {
     "name": "Vital Urgent Care (Brampton West)",
     "address": "11210 Creditview Road, Unit D, Brampton, ON L7A 4X3",
+    "city": "Brampton",
     "website_url": "https://vitalurgentcare.ca/walk-in-clinic-brampton-west/",
     "source_url": "https://vitalurgentcare.ca/walk-in-clinic-brampton-west/",
-    "phone": "905-257-6712"
+    "phone": "905-257-6712",
+    "lat": 43.6973623,
+    "lng": -79.8487388
+  },
+  {
+    "name": "Square One Health Group",
+    "address": "411 Burnhamthorpe Rd West, Mississauga, ON L5B 0J5",
+    "city": "Mississauga",
+    "website_url": "https://sq1healthgroup.com/",
+    "source_url": "https://sq1healthgroup.com/",
+    "lat": 43.5811143,
+    "lng": -79.6496123
+  },
+  {
+    "name": "Royal Windsor Medical Clinic",
+    "address": "2157 Royal Windsor Drive, Unit 2, Mississauga, ON L5J 1K5",
+    "city": "Mississauga",
+    "website_url": "http://royalwindsormedical.com/",
+    "source_url": "http://royalwindsormedical.com/",
+    "lat": 43.5087811,
+    "lng": -79.6331007
+  },
+  {
+    "name": "Dundas Urgent Care",
+    "address": "1911 Dundas Street East, Unit 14, Mississauga, ON L4X 1M1",
+    "city": "Mississauga",
+    "website_url": "https://dundasurgentcare.com/",
+    "source_url": "https://dundasurgentcare.com/",
+    "lat": 43.6208702,
+    "lng": -79.572551
+  },
+  {
+    "name": "Rapid Access to Medical Specialists",
+    "address": "21 Queensway West, Mississauga, ON L5B 1B6",
+    "city": "Mississauga",
+    "website_url": "https://www.rapidaccesstomedicalspecialists.ca/",
+    "source_url": "https://www.rapidaccesstomedicalspecialists.ca/",
+    "lat": 43.5739621,
+    "lng": -79.6083172
+  },
+  {
+    "name": "UCC Urgent Care Centre (Dundas St)",
+    "address": "1500 Dundas Street East, Mississauga, ON L4X 1L4",
+    "city": "Mississauga",
+    "website_url": "https://www.urgentcarecentre.ca/",
+    "source_url": "https://www.urgentcarecentre.ca/",
+    "lat": 43.6089969,
+    "lng": -79.5774703
+  },
+  {
+    "name": "Vellore Medical Walk-In Clinic",
+    "address": "3737 Major MacKenzie Dr W, Suite 104, Vaughan, ON L4H 3C8",
+    "city": "Vaughan",
+    "website_url": "https://medicalwalkin.ca/",
+    "source_url": "https://medicalwalkin.ca/",
+    "lat": 43.8448342,
+    "lng": -79.5586329
+  },
+  {
+    "name": "Paywand Medical Centre",
+    "address": "3905 Major Mackenzie Dr W, #113, Vaughan, ON L4H 4J9",
+    "city": "Vaughan",
+    "website_url": "https://paywandmedicalcentre.com/",
+    "source_url": "https://paywandmedicalcentre.com/",
+    "lat": 43.8441324,
+    "lng": -79.563439
+  },
+  {
+    "name": "Eagles Landing Medical Centre",
+    "address": "1410 Major MacKenzie Dr West, Vaughan, ON L6A 4H6",
+    "city": "Vaughan",
+    "website_url": "https://www.eagleslandingmc.com/",
+    "source_url": "https://www.eagleslandingmc.com/",
+    "lat": 43.8635908,
+    "lng": -79.4855558
+  },
+  {
+    "name": "Markham Central Clinic",
+    "address": "9560 Markham Rd, Markham, ON L6E 0T9",
+    "city": "Markham",
+    "website_url": "https://www.markhamcentralclinic.com/",
+    "source_url": "https://www.markhamcentralclinic.com/",
+    "lat": 43.8982269,
+    "lng": -79.2661247
+  },
+  {
+    "name": "Markham Travel Health & Family Practice",
+    "address": "7155 Woodbine Ave, #130, Markham, ON L3R 1A3",
+    "city": "Markham",
+    "website_url": "https://markhamtravelhealth.com/",
+    "source_url": "https://markhamtravelhealth.com/",
+    "lat": 43.8179035,
+    "lng": -79.3489626
+  },
+  {
+    "name": "Markham Medical Clinic",
+    "address": "200 Bullock Dr, Markham, ON L3P 1W2",
+    "city": "Markham",
+    "website_url": "https://www.markhammedicalclinic.com/",
+    "source_url": "https://www.markhammedicalclinic.com/",
+    "lat": 43.8743128,
+    "lng": -79.2847693
+  },
+  {
+    "name": "Aries Medical Centre",
+    "address": "36 Vodden St E, #303, Brampton, ON L6V 4H4",
+    "city": "Brampton",
+    "website_url": "https://www.ariesmedicalcentre.com/",
+    "source_url": "https://www.ariesmedicalcentre.com/",
+    "lat": 43.694775,
+    "lng": -79.7676833
+  },
+  {
+    "name": "MedCare Clinics - Riverview Heights",
+    "address": "20 Rivermont Road, Unit B7-B9, Brampton, ON L6Y 6G7",
+    "city": "Brampton",
+    "website_url": "https://medcareclinics.com/urgent-care-clinic-brampton",
+    "source_url": "https://medcareclinics.com/urgent-care-clinic-brampton",
+    "lat": 43.6227134,
+    "lng": -79.7816974
+  },
+  {
+    "name": "Intrepid Health Brampton",
+    "address": "75 Montpelier St, Brampton, ON L6Y 6H4",
+    "city": "Brampton",
+    "website_url": "https://intrepidhealthgroup.com/clinics/walk-in-clinic-and-urgent-care-in-brampton/",
+    "source_url": "https://intrepidhealthgroup.com/clinics/walk-in-clinic-and-urgent-care-in-brampton/",
+    "lat": 43.6332058,
+    "lng": -79.7861626
+  },
+  {
+    "name": "Winston Park Medical Centre",
+    "address": "2315 Bristol Circle, Oakville, ON L6H 6P8",
+    "city": "Oakville",
+    "website_url": "https://www.winstonparkmedicalcentre.ca/",
+    "source_url": "https://www.winstonparkmedicalcentre.ca/",
+    "lat": 43.5168215,
+    "lng": -79.6749404
+  },
+  {
+    "name": "Uptown Medical",
+    "address": "2423 Trafalgar Road, Oakville, ON L6H 6K7",
+    "city": "Oakville",
+    "website_url": "https://uptownmedical.ca/",
+    "source_url": "https://uptownmedical.ca/",
+    "lat": 43.4865106,
+    "lng": -79.7143017
+  },
+  {
+    "name": "Kerr Street Medical Centre",
+    "address": "344 Kerr Street, Oakville, ON L6K 3B8",
+    "city": "Oakville",
+    "website_url": "https://www.kerrmedical.ca/",
+    "source_url": "https://www.kerrmedical.ca/",
+    "lat": 43.4438431,
+    "lng": -79.6821297
+  },
+  {
+    "name": "MAWI Medical Clinic",
+    "address": "2525 Prince Michael Drive, Unit B1, Oakville, ON L6H 0E9",
+    "city": "Oakville",
+    "website_url": "https://mawiclinic.com/",
+    "source_url": "https://mawiclinic.com/",
+    "lat": 43.4985523,
+    "lng": -79.7069958
+  },
+  {
+    "name": "Crystal Care Walk-In Clinic & Medical Centre",
+    "address": "9020 Louis St Laurent Ave, Unit 2, Milton, ON L9T 0J9",
+    "city": "Milton",
+    "website_url": "https://crystalcareclinic.ca/",
+    "source_url": "https://crystalcareclinic.ca/",
+    "lat": 43.5060389,
+    "lng": -79.8378782
+  },
+  {
+    "name": "Central Bolton Walk-In Clinic",
+    "address": "9-15 Allan Drive, Bolton, ON L7E 2B5",
+    "city": "Caledon",
+    "website_url": "https://www.centralboltonwalkinclinic.ca/",
+    "source_url": "https://www.centralboltonwalkinclinic.ca/",
+    "lat": 43.8760898,
+    "lng": -79.7235686
+  },
+  {
+    "name": "Richmond Hill Walk-In Clinic",
+    "address": "301 High Tech Rd, Richmond Hill, ON L4B 4R2",
+    "city": "Richmond Hill",
+    "website_url": "https://www.richmondhillwalkinclinic.ca/",
+    "source_url": "https://www.richmondhillwalkinclinic.ca/",
+    "lat": 43.8426883,
+    "lng": -79.4190777
+  },
+  {
+    "name": "The Walkin Clinic on Bayview",
+    "address": "9019 Bayview Ave, Suite 8, Richmond Hill, ON L4B 3M6",
+    "city": "Richmond Hill",
+    "website_url": "https://bayviewwalkin.com/",
+    "source_url": "https://bayviewwalkin.com/",
+    "lat": 43.8518615,
+    "lng": -79.4093441
+  },
+  {
+    "name": "Viva Health Centre",
+    "address": "9580 Yonge Street, Unit 6, Richmond Hill, ON L4C 1V6",
+    "city": "Richmond Hill",
+    "website_url": "https://vivahealthcentres.com/",
+    "source_url": "https://vivahealthcentres.com/",
+    "lat": 43.861075,
+    "lng": -79.4359874
+  },
+  {
+    "name": "Westway Medical Clinic",
+    "address": "1723 Kipling Ave, #4, Etobicoke, ON M9R 4E1",
+    "city": "Etobicoke",
+    "website_url": "https://westwaymedicalclinic.com/",
+    "source_url": "https://westwaymedicalclinic.com/",
+    "lat": 43.6922649,
+    "lng": -79.5575816
+  },
+  {
+    "name": "Bloor Walk-In Clinic",
+    "address": "3101 Bloor St West, Etobicoke, ON M8X 2W2",
+    "city": "Etobicoke",
+    "website_url": "https://bloorwalkinclinic.ca/",
+    "source_url": "https://bloorwalkinclinic.ca/",
+    "lat": 43.6460205,
+    "lng": -79.516156
+  },
+  {
+    "name": "Ellesmere Family Health Group",
+    "address": "2100 Ellesmere Road, Suite 106, Scarborough, ON M1H 3B7",
+    "city": "Scarborough",
+    "website_url": "https://ellesmerefamilyhealth.com/",
+    "source_url": "https://ellesmerefamilyhealth.com/",
+    "lat": 43.7765355,
+    "lng": -79.2329793
+  },
+  {
+    "name": "Scarborough Village Medical Center",
+    "address": "3460 Kingston Road, Scarborough, ON M1M 1R5",
+    "city": "Scarborough",
+    "website_url": "https://scarboroughvillagemedicalcenter.ca/",
+    "source_url": "https://scarboroughvillagemedicalcenter.ca/",
+    "lat": 43.73841,
+    "lng": -79.21833
+  },
+  {
+    "name": "One Care Medical and Children's Clinic",
+    "address": "1755 Brimley Rd, Scarborough, ON M1P 0A3",
+    "city": "Scarborough",
+    "website_url": "https://onecaremedicalclinic.com/",
+    "source_url": "https://onecaremedicalclinic.com/",
+    "lat": 43.7787159,
+    "lng": -79.2642056
+  },
+  {
+    "name": "Town Care Medical Clinic",
+    "address": "55 Town Centre Court, Unit 109A, Scarborough, ON M1P 4X4",
+    "city": "Scarborough",
+    "website_url": "https://townclinic.ca/",
+    "source_url": "https://townclinic.ca/",
+    "lat": 43.77389,
+    "lng": -79.2542345
+  },
+  {
+    "name": "Dufferin Family Care Centre & Walk-In Clinic",
+    "address": "51 Gerry Fitzgerald Dr, North York, ON M3J 3N4",
+    "city": "North York",
+    "website_url": "https://www.dufferinfamilycare.com/",
+    "source_url": "https://www.dufferinfamilycare.com/",
+    "lat": 43.7847514,
+    "lng": -79.4717093
+  },
+  {
+    "name": "Intrepid Health North York",
+    "address": "1575 Jane Street, #7, North York, ON M9N 2R3",
+    "city": "North York",
+    "website_url": "https://intrepidhealthgroup.com/clinics/walk-in-clinic-and-urgent-care-jane-and-finch/",
+    "source_url": "https://intrepidhealthgroup.com/clinics/walk-in-clinic-and-urgent-care-jane-and-finch/",
+    "lat": 43.7234221,
+    "lng": -79.5092336
+  },
+  {
+    "name": "SanoMed Medical Clinic",
+    "address": "1000 Bay Street, Toronto, ON M5S 3A8",
+    "city": "Toronto",
+    "website_url": "https://sanomedclinic.ca/",
+    "source_url": "https://sanomedclinic.ca/",
+    "lat": 43.6654702,
+    "lng": -79.3878852
+  },
+  {
+    "name": "WellOne Medical Centre",
+    "address": "18 Yonge Street, Toronto, ON M5E 1Z8",
+    "city": "Toronto",
+    "website_url": "https://www.wellone.ca/",
+    "source_url": "https://www.wellone.ca/",
+    "lat": 43.6443947,
+    "lng": -79.3765243
+  },
+  {
+    "name": "Infinity Health Centre",
+    "address": "39 Lower Simcoe Street, Toronto, ON M5J 3A6",
+    "city": "Toronto",
+    "website_url": "https://infinityhealthcentre.com/",
+    "source_url": "https://infinityhealthcentre.com/",
+    "lat": 43.6420544,
+    "lng": -79.383612
+  },
+  {
+    "name": "Yonge Urgent Care",
+    "address": "427 Yonge Street, Toronto, ON M5B 1T1",
+    "city": "Toronto",
+    "website_url": "https://yongeurgentcare.com/",
+    "source_url": "https://yongeurgentcare.com/",
+    "lat": 43.660333,
+    "lng": -79.3823736
   }
 ]

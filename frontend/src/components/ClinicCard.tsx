@@ -53,7 +53,7 @@ export function ClinicCard({ clinic, distanceKm }: { clinic: Clinic; distanceKm?
 
       <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
         {clinic.phone && (
-          <a href={`tel:${clinic.phone}`} className="text-blue-600 hover:underline dark:text-blue-400">
+          <a href={`tel:${clinic.phone}`} className="text-accent hover:underline">
             {clinic.phone}
           </a>
         )}
@@ -61,7 +61,7 @@ export function ClinicCard({ clinic, distanceKm }: { clinic: Clinic; distanceKm?
           href={clinic.website_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:underline dark:text-blue-400"
+          className="text-accent hover:underline"
         >
           Website
         </a>
@@ -70,7 +70,7 @@ export function ClinicCard({ clinic, distanceKm }: { clinic: Clinic; distanceKm?
             href={clinic.booking_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline dark:text-blue-400"
+            className="text-accent hover:underline"
           >
             Book
           </a>

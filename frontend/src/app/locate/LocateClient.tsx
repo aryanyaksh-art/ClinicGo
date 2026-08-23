@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { supabase } from "@/lib/supabase";
-import { distanceKm } from "@/lib/geo";
 import type { Clinic } from "@/lib/types";
 import { AddressSearch } from "@/components/AddressSearch";
 import { ClinicCard } from "@/components/ClinicCard";
+import { DecorativeBlobs } from "@/components/DecorativeBlobs";
 
 interface ResultClinic {
   clinic: Clinic;
-  distanceKm: number | null;
+  distanceKm: number;
 }
 
 export function LocateClient() {
@@ -40,29 +39,19 @@ export function LocateClient() {
       const { lat, lon, display_name } = geoData as { lat: number; lon: number; display_name: string };
       setLocationLabel(display_name);
 
-      const { data, error: dbError } = await supabase
-        .from("clinics")
-        .select("*, clinic_latest_status(*)")
-        .order("name");
+      const sweepRes = await fetch("/api/sweep", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lat, lon }),
+      });
+      const sweepData = await sweepRes.json();
 
-      if (dbError) {
-        setError(dbError.message);
+      if (!sweepRes.ok) {
+        setError(sweepData.error ?? "Could not check clinics right now.");
         return;
       }
 
-      const clinics = (data ?? []) as unknown as Clinic[];
-      const withDistance: ResultClinic[] = clinics.map((clinic) => ({
-        clinic,
-        distanceKm: clinic.lat != null && clinic.lng != null ? distanceKm(lat, lon, clinic.lat, clinic.lng) : null,
-      }));
-
-      withDistance.sort((a, b) => {
-        if (a.distanceKm == null) return 1;
-        if (b.distanceKm == null) return -1;
-        return a.distanceKm - b.distanceKm;
-      });
-
-      setResults(withDistance);
+      setResults(sweepData.results as ResultClinic[]);
     } catch {
       setError("Something went wrong finding that address. Please try again.");
     } finally {
@@ -80,18 +69,21 @@ export function LocateClient() {
   const visibleResults = results?.filter((r) => !openOnly || r.clinic.clinic_latest_status[0]?.accepting_walk_ins === true);
 
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
-      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-12">
+    <main className="relative flex flex-1 flex-col overflow-hidden bg-zinc-50 dark:bg-black">
+      <DecorativeBlobs />
+      <div className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-12">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">Locate a clinic</h1>
           <p className="text-zinc-600 dark:text-zinc-400">
-            Enter your address to see Brampton walk-in clinics sorted by how far they are from you.
+            Enter your address to sweep the nearest walk-in clinics across the GTA, checked live, right now.
           </p>
         </div>
 
         <AddressSearch initialValue={initialAddress} onSearch={handleSearch} />
 
-        {loading && <p className="text-sm text-zinc-500">Finding clinics near you...</p>}
+        {loading && (
+          <p className="text-sm text-zinc-500">Sweeping clinics near you. This checks each clinic&apos;s site live, so it can take a moment...</p>
+        )}
 
         {error && (
           <p className="rounded-lg bg-red-50 p-4 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-300">
@@ -112,7 +104,7 @@ export function LocateClient() {
                 type="checkbox"
                 checked={openOnly}
                 onChange={(e) => setOpenOnly(e.target.checked)}
-                className="h-4 w-4 rounded border-zinc-300 dark:border-zinc-700"
+                className="h-4 w-4 rounded border-zinc-300 text-accent focus:ring-accent dark:border-zinc-700"
               />
               Accepting walk-ins only
             </label>
@@ -122,7 +114,7 @@ export function LocateClient() {
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {visibleResults?.map((r) => (
-                  <ClinicCard key={r.clinic.id} clinic={r.clinic} distanceKm={r.distanceKm ?? undefined} />
+                  <ClinicCard key={r.clinic.id} clinic={r.clinic} distanceKm={r.distanceKm} />
                 ))}
               </div>
             )}

@@ -15,10 +15,13 @@ export interface Clinic {
 export interface ClinicSeed {
   name: string;
   address: string;
+  city?: string;
   website_url: string;
   source_url: string;
   phone?: string;
   booking_url?: string;
+  lat?: number;
+  lng?: number;
 }
 
 export interface ClinicStatusExtraction {

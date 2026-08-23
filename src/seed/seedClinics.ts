@@ -16,10 +16,13 @@ async function main() {
       seeds.map((s) => ({
         name: s.name,
         address: s.address,
+        city: s.city ?? "Brampton",
         website_url: s.website_url,
         source_url: s.source_url,
         phone: s.phone ?? null,
         booking_url: s.booking_url ?? null,
+        lat: s.lat ?? null,
+        lng: s.lng ?? null,
       })),
       { onConflict: "name,address", count: "exact" }
     );

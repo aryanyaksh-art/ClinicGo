@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ClinicGo",
-  description: "Find a walk-in clinic in Brampton that's actually open right now.",
+  description: "Find a walk-in clinic in the GTA that's actually open right now.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

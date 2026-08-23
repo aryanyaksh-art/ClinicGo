@@ -1,3 +1,5 @@
+import { DecorativeBlobs } from "@/components/DecorativeBlobs";
+
 const founders = [
   { name: "Aryan", role: "Co-Founder", initials: "A" },
   { name: "Gurneil", role: "Co-Founder", initials: "G" },
@@ -5,8 +7,9 @@ const founders = [
 
 export default function FoundersPage() {
   return (
-    <main className="flex flex-1 flex-col bg-white dark:bg-black">
-      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-12 px-6 py-16">
+    <main className="relative flex flex-1 flex-col overflow-hidden bg-white dark:bg-black">
+      <DecorativeBlobs />
+      <div className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col gap-12 px-6 py-16">
         <div className="flex flex-col gap-2 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">Founders</h1>
           <p className="text-zinc-600 dark:text-zinc-400">
@@ -18,7 +21,7 @@ export default function FoundersPage() {
           {founders.map((founder) => (
             <div key={founder.name} className="flex flex-col items-center gap-4 text-center">
               {/* TODO: replace with a real photo, e.g. /founders/aryan.jpg in /public */}
-              <div className="flex h-32 w-32 items-center justify-center rounded-full bg-zinc-100 text-3xl font-semibold text-zinc-400 dark:bg-zinc-900 dark:text-zinc-600">
+              <div className="flex h-32 w-32 items-center justify-center rounded-full bg-accent-soft text-3xl font-semibold text-accent">
                 {founder.initials}
               </div>
               <div>
