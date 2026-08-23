@@ -1,4 +1,5 @@
 export interface ClinicLatestStatus {
+  clinic_id: string;
   accepting_walk_ins: boolean | null;
   estimated_wait_minutes: number | null;
   raw_status_text: string | null;

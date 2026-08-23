@@ -3,13 +3,14 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Firecrawl } from "firecrawl";
 import { distanceKm } from "@/lib/geo";
 import { walkInStatusSchema } from "@/lib/sweepSchema";
-import type { Clinic } from "@/lib/types";
+import type { Clinic, ClinicLatestStatus } from "@/lib/types";
 
 export const maxDuration = 60;
 
-const NEAREST_N = 15;
+const NEAREST_N = 10;
 const FRESHNESS_MINUTES = 10;
-const SCRAPE_CONCURRENCY = 5;
+const SCRAPE_CONCURRENCY = 3;
+const RATE_LIMIT_RETRY_DELAY_MS = 5000;
 
 // Constructed lazily (inside the handler, not at module load) so a missing env var
 // only breaks requests to this route, not the whole build.
@@ -32,17 +33,38 @@ function getFirecrawl(): Firecrawl {
 }
 
 interface RawClinic extends Clinic {
-  clinic_latest_status: Array<Clinic["clinic_latest_status"][number]>;
+  clinic_latest_status: ClinicLatestStatus[];
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function scrapeWithRetry(url: string) {
+  try {
+    return await getFirecrawl().scrape(url, {
+      formats: [{ type: "json", schema: walkInStatusSchema }],
+      onlyMainContent: false,
+      timeout: 45_000,
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (message.includes("Rate limit exceeded")) {
+      await sleep(RATE_LIMIT_RETRY_DELAY_MS);
+      return await getFirecrawl().scrape(url, {
+        formats: [{ type: "json", schema: walkInStatusSchema }],
+        onlyMainContent: false,
+        timeout: 45_000,
+      });
+    }
+    throw err;
+  }
 }
 
 async function scrapeOne(clinic: Clinic) {
   const supabase = getSupabaseAdmin();
   try {
-    const result = await getFirecrawl().scrape(clinic.website_url, {
-      formats: [{ type: "json", schema: walkInStatusSchema }],
-      onlyMainContent: false,
-      timeout: 45_000,
-    });
+    const result = await scrapeWithRetry(clinic.website_url);
     const extracted = (result as { json?: unknown }).json as
       | { accepting_walk_ins: boolean | null; estimated_wait_minutes: number | null; raw_status_text: string | null }
       | undefined;
@@ -56,33 +78,37 @@ async function scrapeOne(clinic: Clinic) {
       scrape_error: null,
     };
     await supabase.from("clinic_status_checks").insert(row);
-    return { ...row, checked_at: new Date().toISOString() };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    const row = {
+    await supabase.from("clinic_status_checks").insert({
       clinic_id: clinic.id,
       accepting_walk_ins: null,
       estimated_wait_minutes: null,
       raw_status_text: null,
       scrape_success: false,
       scrape_error: message,
-    };
-    await supabase.from("clinic_status_checks").insert(row);
-    return { ...row, checked_at: new Date().toISOString() };
+    });
   }
 }
 
-async function runBatched<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
-  const results: R[] = new Array(items.length);
+async function runBatched<T>(items: T[], limit: number, fn: (item: T) => Promise<void>): Promise<void> {
   let cursor = 0;
   async function worker() {
     while (cursor < items.length) {
       const i = cursor++;
-      results[i] = await fn(items[i]);
+      await fn(items[i]);
     }
   }
   await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
-  return results;
+}
+
+/** Prefer the latest check; if it failed, fall back to the most recent successful one so a
+ *  transient scrape failure doesn't blank out previously-known-good status in the UI. */
+function pickDisplayStatus(checks: ClinicLatestStatus[]): ClinicLatestStatus | undefined {
+  if (checks.length === 0) return undefined;
+  const [latest] = checks;
+  if (latest.scrape_success) return latest;
+  return checks.find((c) => c.scrape_success) ?? latest;
 }
 
 export async function POST(req: NextRequest) {
@@ -123,22 +149,34 @@ export async function POST(req: NextRequest) {
     scrapeOne
   );
 
-  // Re-fetch so every clinic (freshly scraped or already-fresh) reflects its latest status.
+  // Pull recent history (not just the single latest row) so a fresh failure can fall back
+  // to the last known-good status instead of displaying "unknown".
   const ids = withDistance.map((r) => r.clinic.id);
-  const { data: refreshed, error: refreshError } = await supabase
-    .from("clinics")
-    .select("*, clinic_latest_status(*)")
-    .in("id", ids);
+  const { data: history, error: historyError } = await supabase
+    .from("clinic_status_checks")
+    .select("*")
+    .in("clinic_id", ids)
+    .order("checked_at", { ascending: false })
+    .limit(ids.length * 5);
 
-  if (refreshError) {
-    return NextResponse.json({ error: refreshError.message }, { status: 500 });
+  if (historyError) {
+    return NextResponse.json({ error: historyError.message }, { status: 500 });
   }
 
-  const byId = new Map((refreshed as unknown as RawClinic[]).map((c) => [c.id, c]));
-  const results = withDistance.map(({ clinic, distanceKm }) => ({
-    clinic: byId.get(clinic.id) ?? clinic,
-    distanceKm,
-  }));
+  const historyByClinicId = new Map<string, ClinicLatestStatus[]>();
+  for (const check of history as ClinicLatestStatus[]) {
+    const list = historyByClinicId.get(check.clinic_id) ?? [];
+    list.push(check);
+    historyByClinicId.set(check.clinic_id, list);
+  }
+
+  const results = withDistance.map(({ clinic, distanceKm }) => {
+    const display = pickDisplayStatus(historyByClinicId.get(clinic.id) ?? []);
+    return {
+      clinic: { ...clinic, clinic_latest_status: display ? [display] : [] },
+      distanceKm,
+    };
+  });
 
   return NextResponse.json({ results, sweptCount: toScrape.length });
 }
